@@ -1,0 +1,15 @@
+{% extends 'base/template.html' %}
+{% load static %}
+{% block content %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+	<div id="container">
+        <h4>success</h4>
+		{{status}}
+	</div>
+
+	<div class="text-center mt-5">
+        <a href="{% url 'razorpay_123' %}" class="btn btn-primary" role="button">Buy another one</a>
+    </div>
+
+{% endblock content %}

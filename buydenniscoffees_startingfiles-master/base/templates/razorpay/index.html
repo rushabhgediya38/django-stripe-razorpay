@@ -1,0 +1,135 @@
+{% extends 'base/template.html' %}
+{% load static %}
+{% block content %}
+
+<!--<div id="app">-->
+<!--<div class="col-6 pt-5  mx-auto">-->
+<!--<div class="text-center">-->
+<!--<img src="https://img.rawpixel.com/s3fs-private/rawpixel_images/creative_room/v804-sasi-lifestylesticker-112_2.jpg?bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&q=80&usm=15&vib=3&w=1300&s=a3fa6d5eb4233e9b7ca392ce92635226"-->
+<!--style="height:200px" class="img-fluid img-reponsive text-center">-->
+
+<!--<h4>Buy me a Coffee</h4>-->
+
+<!--</div>-->
+
+<!--    <form class="m" action="{% url 'razorpay_123' %}" method="post" >-->
+<!--        {% csrf_token %}-->
+<!--        <div class="form-group pt-4">-->
+<!--            <label for="exampleInputEmail1">Your name</label>-->
+<!--            <input  v-model="name" name="name" type="text" class="form-control"-->
+<!--             id="exampleInputEmail1" aria-describedby="emailHelp">-->
+
+<!--          </div>-->
+<!--        <div class="form-group">-->
+<!--          <label for="exampleInputEmail1">Enter Amount</label>-->
+<!--          <input v-model="amount" type="number"  class="form-control" name="amount"-->
+<!--           id="exampleInputEmail1" aria-describedby="emailHelp">-->
+<!--          <small id="emailHelp" class="form-text text-muted">-->
+<!--              Thanks for the coffee.</small>-->
+<!--        </div>-->
+
+<!--        <button type="submit">submit</button>-->
+
+<!--        &lt;!&ndash; <button class="btn btn-success btn-block" type="submit">Buy</button> &ndash;&gt;-->
+<!--        </form>-->
+
+
+<!--    {% if payment %}-->
+<!--    <form action="{% url 'razorpay_success' %}" method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        <script-->
+<!--                src="https://checkout.razorpay.com/v1/checkout.js"-->
+<!--                data-key="rzp_test_Xc9UxEOPIP6DZy"-->
+<!--                data-amount="{{ payment.amount }}"-->
+<!--                data-currency="INR"-->
+<!--                data-order_id="{{ payment.id }}"-->
+<!--                data-buttontext="Pay with Razorpay"-->
+<!--                data-name="Cold Coffee Shop"-->
+<!--                data-description="Have a Cold Coffee that will make your mood fresh!"-->
+<!--                data-image="https://example.com/your_logo.jpg"-->
+<!--                data-prefill.name="abc"-->
+<!--                data-prefill.email="you@example.com"-->
+<!--                data-theme.color="#F37254"-->
+<!--        ></script>-->
+<!--        <input type="hidden" custom="Hidden Element" name="hidden">-->
+<!--    </form>-->
+<!--    {% endif %}-->
+
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<div id="container">
+		<div class="column-6">
+			<div id="left-wrapper">
+				<img id="profile-pic" src="{% static 'images/Dennis.JPG' %}">
+				<div id="left-wrapper-header">
+					<h3>Buy Us Coffee?</h3>
+					<h5>One Time Donation</h5>
+				</div>
+				<div style="clear:left"></div>
+				<hr>
+				<!-- Add form here -->
+				<form action="{% url 'razorpay_123' %}" method="post">
+					{% csrf_token %}
+					<div class="form-field-12">
+						<label for="amount">Choose Amount:</label>
+						<br>
+						<br>
+						<select required name="amount" id="amount">
+						  <option selected value="50">50 --- Here's a coffee, on me :)</option>
+						  <option value="100">100 --- You helped me, so I am going to help you</option>
+						  <option value="250">250 --- I love your channel!</option>
+						</select>
+					</div>
+
+					<div class="form-field-6">
+						<input required type="text" name="nickname" placeholder="Nickname...">
+					</div>
+
+				 	<input  class="myButton" style="background-color:#10a195" type="submit">
+
+				</form>
+
+				{% if payment %}
+				<form action="{% url 'razorpay_success' %}" method="POST">
+					{% csrf_token %}
+					<script
+							src="https://checkout.razorpay.com/v1/checkout.js"
+							data-key="rzp_test_Xc9UxEOPIP6DZy"
+							data-amount="{{ payment.amount }}"
+							data-currency="INR"
+							data-order_id="{{ payment.id }}"
+							data-buttontext="Pay with Razorpay"
+							data-name="Cold Coffee Shop"
+							data-description="Have a Cold Coffee that will make your mood fresh!"
+							data-image="https://example.com/your_logo.jpg"
+							data-prefill.name="abc"
+							data-prefill.email="you@example.com"
+							data-theme.color="#F37254"
+					></script>
+					<input type="hidden" custom="Hidden Element" name="hidden">
+				</form>
+				{% endif %}
+
+			</div>
+		</div>
+
+		<div class="column-6">
+			<div id="right-wrapper">
+
+				<img class="coffee-cup" src="{% static 'images/Coffee5.png' %}">
+				<img class="coffee-cup2" src="{% static 'images/Coffee10.png' %}">
+				<img class="coffee-cup3" src="{% static 'images/Coffee25.png' %}">
+				<h3>If I've provided you with value please consider supporting our efforts ;)</h3>
+
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}
+
+
+
+
